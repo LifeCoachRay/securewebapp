@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Favicon-->
+		<link rel="shortcut icon" type="image/x-icon" href="aidoge.png"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: blue;
+          }
+          
+          #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            display: none;
+          }
+          
+    </style>
+    <title>Secure Web App</title>
+  </head>
+  <body>
+    <h1>Secure Web App</h1>
+    <form id="url-form">
+      <label>
+        Enter a URL:
+        <input type="text" id="url-input">
+      </label>
+      <button type="submit">Check</button>
+    </form>
+    <br>
+    <div id="result"></div>
+    <script>
+      const form = document.getElementById('url-form')
+const input = document.getElementById('url-input')
+const resultDiv = document.getElementById('result')
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault()
+  const url = input.value
+  input.value = ''
+
+  const response = await fetch(`http://localhost:7000/?url=${url}`)
+  const result = await response.json()
+
+  if (result.error) {
+    resultDiv.innerHTML = `Error: ${result.error}`
+    resultDiv.style.backgroundColor = 'red'
+  } else {
+    resultDiv.innerHTML = `URL: ${result.url}<br>Is secure: ${result.isSecure}`
+    resultDiv.style.backgroundColor = 'green'
+  }
+  resultDiv.style.display = 'block'
+})
+
+    </script>
+  </body>
+</html>

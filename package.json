@@ -1,0 +1,28 @@
+{
+  "name": "securewebapp",
+  "version": "0.0.1",
+  "description": "Enter a URL and this API will detect if the URL is running on a secure connection.",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lifecoachray"
+  },
+  "keywords": [
+    "server",
+    "API",
+    "secure",
+    "website",
+    "URL"
+  ],
+  "author": "Life Coach Ray",
+  "license": "GNU",
+  "dependencies": {
+    "express": "^4.18.2",
+    "https": "^1.0.0",
+    "nodemon": "^2.0.20"
+  }
+}
